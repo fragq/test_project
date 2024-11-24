@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Annotated
 from fastapi import Depends
-from app.db import db_helper
+from app.db import db_helper, SessionFactoryDep
 from app.repositories import WalletRepository
 
 
@@ -9,7 +9,7 @@ class UnitOfWorkBase(ABC):
     walletRepo: WalletRepository
 
     @abstractmethod
-    def __init__(self): ...
+    def __init__(self, session_factory): ...
 
     @abstractmethod
     async def __aenter__(self): ...
@@ -25,8 +25,8 @@ class UnitOfWorkBase(ABC):
 
 
 class UnitOfWork(UnitOfWorkBase):
-    def __init__(self):
-        self.session_factory = db_helper.session_factory
+    def __init__(self, session_factory: SessionFactoryDep):
+        self.session_factory = session_factory
 
     async def __aenter__(self):
         self.session = self.session_factory()

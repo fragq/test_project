@@ -46,4 +46,9 @@ db_helper = DatabaseHelper(
     pool_size=settings.db.POOL_SIZE,
 )
 
+async def get_session_factory() -> AsyncSession:
+    return db_helper.session_factory
+
+SessionFactoryDep = Annotated[AsyncSession, Depends(get_session_factory)]
+
 SessionDep = Annotated[AsyncSession, Depends(db_helper.session_getter)]
