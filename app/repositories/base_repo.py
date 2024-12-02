@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Type, TypeVar
 
-from sqlalchemy import and_, delete, insert, select, update
+from sqlalchemy import and_, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 T = TypeVar("T")
@@ -34,6 +34,13 @@ class GenericSQLAlchemyRepository(GenericRepository[T], ABC):
         where_clause = self._build_where_clause(**filters)
         item = await self._session.scalar(
             select(self._model).where(and_(*where_clause))
+        )
+        return item
+
+    async def get_for_update(self, **filters) -> T | None:
+        where_clause = self._build_where_clause(**filters)
+        item = await self._session.scalar(
+            select(self._model).with_for_update().where(and_(*where_clause))
         )
         return item
 

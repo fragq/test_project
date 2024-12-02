@@ -14,6 +14,9 @@ class BaseWalletRepository(GenericRepository[Wallet], ABC):
     async def get_wallet(self, **filters) -> Wallet: ...
 
     @abstractmethod
+    async def get_wallet_for_update(self, **filters) -> Wallet: ...
+
+    @abstractmethod
     async def update_wallet(self, data: dict[str, Any], **filters) -> Wallet: ...
 
 
@@ -23,6 +26,10 @@ class WalletRepository(GenericSQLAlchemyRepository[Wallet], BaseWalletRepository
 
     async def get_wallet(self, **filters) -> Wallet:
         wallet = await self.get(**filters)
+        return wallet
+
+    async def get_wallet_for_update(self, **filters) -> Wallet:
+        wallet = await self.get_for_update(**filters)
         return wallet
 
     async def update_wallet(self, data: dict[str, Any], **filters) -> Wallet:
