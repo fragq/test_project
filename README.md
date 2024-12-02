@@ -1,6 +1,6 @@
 Тестовое
 
-1) Create .env with your settings like .env.examples
+1) Create .env with your settings like .env.example
 2) poetry install
 3) poetry shell
 4) docker compose up -d --build
