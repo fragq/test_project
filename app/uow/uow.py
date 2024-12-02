@@ -1,7 +1,9 @@
 from abc import ABC, abstractmethod
 from typing import Annotated
+
 from fastapi import Depends
-from app.db import db_helper, SessionFactoryDep
+
+from app.db import SessionFactoryDep, db_helper
 from app.repositories import WalletRepository
 
 

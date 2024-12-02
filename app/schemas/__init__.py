@@ -1,1 +1,1 @@
-from .wallet import WalletDTO, OperationDTO, OperationTypes, Message
+from .wallet import Message, OperationDTO, OperationTypes, WalletDTO

@@ -1,8 +1,11 @@
 from uuid import uuid4
-from httpx import AsyncClient, ASGITransport
+
 import pytest_asyncio
-from app.db import Wallet, Base
+from httpx import ASGITransport, AsyncClient
+
+from app.db import Base, Wallet
 from app.main import app
+
 from .test_api import SessionLocal, engine
 
 

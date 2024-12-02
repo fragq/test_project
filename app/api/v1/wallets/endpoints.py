@@ -1,6 +1,8 @@
 from uuid import UUID
+
 from fastapi import APIRouter
-from app.schemas import WalletDTO, OperationDTO, OperationTypes, Message
+
+from app.schemas import Message, OperationDTO, OperationTypes, WalletDTO
 from app.services import WalletServiceDep
 
 router = APIRouter(prefix="/wallets")

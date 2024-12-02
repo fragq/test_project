@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
-from typing import TypeVar, Type
-from sqlalchemy import delete, insert, select, update, and_
-from sqlalchemy.ext.asyncio import AsyncSession
+from typing import Type, TypeVar
 
+from sqlalchemy import and_, delete, insert, select, update
+from sqlalchemy.ext.asyncio import AsyncSession
 
 T = TypeVar("T")
 

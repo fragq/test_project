@@ -1,10 +1,12 @@
 from typing import Annotated
 from uuid import UUID
+
 from fastapi import Depends
+
 from app.db.models import Wallet
-from app.uow import UnitOfWorkDep
-from app.schemas import WalletDTO
 from app.exceptions import WalletNotFoundError
+from app.schemas import WalletDTO
+from app.uow import UnitOfWorkDep
 
 
 class WalletService:

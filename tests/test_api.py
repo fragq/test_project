@@ -1,9 +1,10 @@
 import uuid
-import pytest
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
-from app.db import get_session_factory, Base
-from app.main import app
 
+import pytest
+from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
+
+from app.db import Base, get_session_factory
+from app.main import app
 
 engine = create_async_engine("sqlite+aiosqlite:///:memory:")
 SessionLocal = async_sessionmaker(

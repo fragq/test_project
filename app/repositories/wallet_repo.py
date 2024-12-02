@@ -1,7 +1,10 @@
 from abc import ABC, abstractmethod
 from typing import Any
+
 from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.db import Wallet
+
 from .base_repo import GenericRepository, GenericSQLAlchemyRepository
 
 
